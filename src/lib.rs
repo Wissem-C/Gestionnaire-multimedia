@@ -1,3 +1,4 @@
+mod Search;
 pub mod cli;
 pub mod menu;
 pub mod metafile;
