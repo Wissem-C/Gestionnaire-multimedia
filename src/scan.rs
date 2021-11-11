@@ -49,35 +49,14 @@ pub fn scan(path: &Path) -> Vec<MusicFile> {
 
             cmp = cmp + 1;
         }
-
-        /*let res = serde_json::from_str(&serialized);
-        if res.is_ok() {
-            let p: MusicFile = res.unwrap();
-            println!("The name of song is => {}", p.title);
-            println!("The name of the album's song is => {}", p.album);
-            println!("The name of the artist is => {}", p.artist);
-            println!("The year of the song is =>  {}", p.year);
-            println!("The creation date of the file => {}", p.creation_date);
-        } else {
-            panic!("ALERT");
-        }
-        */
     }
-    println!("\nNumber of songs added : {}", cmp);
-    let result_serialise = serialise(&music_files);
-    let result_deserialise = deserialise(&result_serialise);
+    //println!("\nNumber of songs added : {}", cmp);
+    serialise(&music_files);
+    //let result_deserialise = deserialise(&result_serialise);
 
-    println!("serialized = {}\n", result_serialise);
-    println!("deserialized = {:?}\n", result_deserialise);
+    //println!("serialized = {}\n", result_serialise);
+    // println!("deserialized = {:?}\n", result_deserialise);
 
-    // let file = fs::File::open("/Users/wissemcherifi/Desktop/medman-Wissem-C-main/src/save.json")
-    //     .expect("file should open read only");
-
-    //let musics: Vec<MusicFile> =
-    //serde_json::from_reader(file).expect("error while reading or parsing");
-    // for music in &music_files {
-    //     println!("Hello {}", music.artist)
-    // }
     music_files
 }
 
