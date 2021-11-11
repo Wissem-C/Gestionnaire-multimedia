@@ -1,65 +1,57 @@
-use std::path::Path;
-use std::process::Command;
-use walkdir::{DirEntry, WalkDir};
+// use std::path::Path;
+// use std::process::Command;
+// use walkdir::{DirEntry, WalkDir};
 extern crate mp3_metadata;
-use crate::cli::CliArguments;
+// use crate::cli::CliArguments;
 use crate::musicfile::MusicFile;
-use crate::scan::scan;
-use std::fs::File;
-use std::io::Write;
+// use crate::scan::scan;
+// use std::fs::File;
+// use std::io::Write;
 //use chrono::prelude::{DateTime, Utc};
-use std::io;
+// use std::io;
 use std::{fs, panic};
 
 //use std::time::{Duration, SystemTime};
 
-// pub fn search_global(recherche: String, path: CliArguments) {
-//     let mut input = String::new();
-//     io::stdin()
-//         .read_line(&mut input)
-//         .expect("Echec de la lecture de l'entrée");
-
-//     let args = CliArguments::new();
-//     scan(args.path());
-// }
-
 pub fn search_global(recherche: String, recherche2: String) {
     // return option pour la loop dans main ?
-    if recherche.trim() == "Artist" {
+    if recherche.trim().contains("Artist") || recherche.trim().contains("artist") {
         search_by_artist(recherche2.trim());
-    } else if recherche.trim() == "Title" {
+    } else if recherche.trim().contains("Title") || recherche.trim().contains("title") {
         search_by_title(recherche2.trim());
-    } else if recherche.trim() == "Year" {
+    } else if recherche.trim().contains("Year") || recherche.trim().contains("year") {
         search_by_year(recherche2.trim());
     } else {
-        println!("Une des donnée renseigné à été mal tapé");
         println!("recherche{}recherche2{:?}", recherche, recherche2);
+        panic!("Une des donnée renseigné à été mal tapé");
     }
 }
 
-pub fn search_by_artist(artist: &str) {
+pub fn search_by_artist(artist: &str) -> String {
     let file =
         fs::File::open("/Users/wissemcherifi/Desktop/medman-Wissem-C-main/src/save.json").unwrap();
     let music_files: Vec<MusicFile>;
+    let mut save_result = String::new();
 
     music_files = serde_json::from_reader(file).expect("error while reading or parsing");
     for music in music_files {
-        if artist == music.artist {
-            println!(
-            "Voici ce que j'ai trouvé :\nArtiste: {}\nTitle: {}\nAlbum: {}\nYear: {}\nCreation date : {:?}\nLast acess: {:?}\nLast modification : {:?}\n",
-           // music_file.path,
-            music.artist,
-            music.title,
-            music.album,
-            music.year,
-            music.creation_date,
-            music.last_access,
-            music.last_modif
+        if artist.contains(&music.artist) {
+            save_result = format!("{:?}",println!(
+                "Voici ce que j'ai trouvé :\nArtiste: {}\nTitle: {}\nAlbum: {}\nYear: {}\nCreation date : {:?}\nLast acess: {:?}\nLast modification : {:?}\n",
+               // music_file.path,
+                music.artist,
+                music.title,
+                music.album,
+                music.year,
+                music.creation_date,
+                music.last_access,
+                music.last_modif,
 
-
-        );
+            ));
         }
     }
+    println!("COUCOU {}", save_result);
+    return save_result;
 }
 
 pub fn search_by_title(title: &str) {
@@ -69,20 +61,19 @@ pub fn search_by_title(title: &str) {
 
     music_files = serde_json::from_reader(file).expect("error while reading or parsing");
     for music in music_files {
-        if title == music.title {
+        if title.contains(&music.title) {
             println!(
-            "Voici ce que j'ai trouvé :\nArtiste: {}\nTitle: {}\nAlbum: {}\nYear: {}\nCreation date : {:?}\nLast acess: {:?}\nLast modification : {:?}\n",
-           // music_file.path,
-            music.artist,
-            music.title,
-            music.album,
-            music.year,
-            music.creation_date,
-            music.last_access,
-            music.last_modif
+                "\nVoici ce que j'ai trouvé :\nArtiste: {}\nTitle: {}\nAlbum: {}\nYear: {}\nCreation date : {:?}\nLast acess: {:?}\nLast modification : {:?}\n",
+               // music_file.path,
+                music.artist,
+                music.title,
+                music.album,
+                music.year,
+                music.creation_date,
+                music.last_access,
+                music.last_modif
 
-
-        );
+            );
         }
     }
 }
@@ -94,29 +85,19 @@ pub fn search_by_year(year: &str) {
 
     music_files = serde_json::from_reader(file).expect("error while reading or parsing");
     for music in music_files {
-        if year == music.year {
+        if year.contains(&music.year) {
             println!(
-            "Voici ce que j'ai trouvé :\nArtiste: {}\nTitle: {}\nAlbum: {}\nYear: {}\nCreation date : {:?}\nLast acess: {:?}\nLast modification : {:?}\n",
-           // music_file.path,
-            music.artist,
-            music.title,
-            music.album,
-            music.year,
-            music.creation_date,
-            music.last_access,
-            music.last_modif
+                "Voici ce que j'ai trouvé :\nArtiste: {}\nTitle: {}\nAlbum: {}\nYear: {}\nCreation date : {:?}\nLast acess: {:?}\nLast modification : {:?}\n",
+               // music_file.path,
+                music.artist,
+                music.title,
+                music.album,
+                music.year,
+                music.creation_date,
+                music.last_access,
+                music.last_modif
 
-
-        );
+            );
         }
     }
 }
-
-/* let file = fs::File::open("/Users/wissemcherifi/Desktop/medman-Wissem-C-main/src/save.json")
-    .expect("file should open read only");
-
-let musics: Vec<MusicFile> =
-    serde_json::from_reader(file).expect("error while reading or parsing");
-for music in musics {
-    println!("Hello {}", music.artist)
-}*/

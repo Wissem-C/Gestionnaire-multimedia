@@ -36,14 +36,4 @@ impl MusicFile {
             last_modif: g,
         }
     }
-
-    //pub fn seria(music_file: MusicFile) {
-    //  let j = serde_json::to_string(&music_file);
-    //  let test = format!("{:?}", println!("{:?}", j));
-    // println!("{}", music_file.album);
-    //   }
-
-    // pub fn get_so(&self) -> String {
-    //   self.title.clone()
-    //}
 }

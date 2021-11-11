@@ -1,4 +1,6 @@
-use clap::App;
+// use clap::App;
+// use serde::Serializer;
+// use std::process::exit;
 use structopt::StructOpt;
 
 /// Représente les arguments en paramètres de ligne de commande

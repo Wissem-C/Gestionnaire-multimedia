@@ -181,11 +181,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a8ca8afbe8af1785e09636acb5a41e08a765f5f0340568716c18a8700ba3c0d3"
 
 [[package]]
+name = "markdown-gen"
+version = "1.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8034621d7f1258317ca1dfb9205e3925d27ee4aa2a46620a09c567daf0310562"
+
+[[package]]
 name = "medman"
 version = "0.1.0"
 dependencies = [
  "chrono",
  "clap",
+ "markdown-gen",
  "mp3-metadata",
  "noise_search_deps_rocksdb",
  "rustc-serialize",
