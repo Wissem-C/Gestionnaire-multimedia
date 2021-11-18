@@ -10,7 +10,10 @@ use crate::search::search_global;
 //use std::env;
 use console::Style;
 use std::io;
+extern crate chrono;
+use chrono::{DateTime, TimeZone};
 use std::path::PathBuf;
+
 //use std::process::exit;
 //use std::io::prelude::*;
 
@@ -44,40 +47,42 @@ pub fn command_scan_search(test: CliArguments) {
     } else if test.command == "search" {
         scan(test.path());
 
-        println!("Par quel type voulez vous recherchez ? Choisissez une des possibilités :\nArtist\nTitle\nYear");
+        println!(
+            "What type are you looking for? Choose one of the possibilities: \nArtist\nTitle\nYear\nAlbum"
+        );
         let mut input = String::new();
         io::stdin()
             .read_line(&mut input)
             .expect("Echec de la lecture de l'entrée");
 
-        println!("Tapez le nom de l'artiste, le titre de la musique ou l'année : ");
+        println!("Type the artist name, the music title, the album title or a year : ");
         let mut input2 = String::new();
         io::stdin()
             .read_line(&mut input2)
-            .expect("Echec de la lecture de l'entrée");
+            .expect("FAILED TO READ ENTRY");
 
         search_global(input, input2)
 
         // println!("PAS ENCORE IMPLÉMENTÉ");
     } else {
-        println!("AUCUNE COMMANDE RECONNUE");
+        println!("NO COMMANDS RECOGNIZED");
     }
 }
 
 pub fn interactif() {
     // PASSAGE EN MODE INTERATIF
-    println!("Tapez la commande que vous voulez utiliser :\nscan\nsearch");
+    println!("Type the command you want to use: \nscan\nsearch");
     let mut input = String::new();
     io::stdin()
         .read_line(&mut input)
-        .expect("Echec de la lecture de l'entrée");
+        .expect("FAILED TO READ ENTRY");
 
-    println!("Donnez le chemin pour analyser vos donner");
+    println!("Give the path to analyze your data");
 
     let mut input2 = String::new();
     io::stdin()
         .read_line(&mut input2)
-        .expect("Echec de la lecture de l'entrée");
+        .expect("FAILED TO READ ENTRY");
 
     let path = PathBuf::from(input2.trim());
 

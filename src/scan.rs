@@ -6,6 +6,7 @@ use crate::musicfile::MusicFile;
 use std::fs::File;
 use std::io::Write;
 //use chrono::prelude::{DateTime, Utc};
+use std::time::SystemTime;
 use std::{fs, panic};
 //use std::time::{Duration, SystemTime};
 
@@ -13,7 +14,6 @@ const SUPPORTED_EXTENSIONS: [&str; 1] = ["mp3"];
 
 fn is_supported(entry: &DirEntry) -> bool {
     entry.path().is_file()
-        && SUPPORTED_EXTENSIONS.contains(&entry.path().extension().unwrap().to_str().unwrap())
 }
 
 pub fn scan(path: &Path) -> Vec<MusicFile> {
@@ -31,8 +31,8 @@ pub fn scan(path: &Path) -> Vec<MusicFile> {
 
         if is_supported(&entry) {
             let meta_song =
-                mp3_metadata::read_from_file(entry.path()).expect("File error mp3_metadata");
-            let meta_file = fs::metadata(entry.path()).expect("Error mp3 metadata");
+                mp3_metadata::read_from_file(entry.path()).expect("FILE ERROR MP3_METADATA");
+            let meta_file = fs::metadata(entry.path()).expect("FILE ERROR FS");
 
             if let Some(tag) = meta_song.tag {
                 music_files.push(MusicFile::new(
@@ -68,15 +68,15 @@ pub fn delete_dir(path: &Path) {
     list_dir.current_dir(&path);
 
     if list_dir.status().is_ok() {
-        println!("\nLE FICHIER DS_STORE À BIEN ÉTÉ SUPPRIMÉ OU N'EST PAS PRÉSENT")
+        println!("\nLE DS_STORE FILE HAS BEEN DELETED OR NOT PRESENT")
     } else {
-        panic!("LE FICHIER DS_STORE POSE PROBLEME !!");
+        panic!("THE DS_STORE FILE IS A PROBLEM !!");
     }
 }
 
 pub fn serialise(music_file: &Vec<MusicFile>) -> String {
     let mut file = File::create("/Users/wissemcherifi/Desktop/medman-Wissem-C-main/src/save.json")
-        .expect("Error");
+        .expect("ERROR SERIALISATION");
 
     let serialized = serde_json::to_string(&music_file).unwrap();
 

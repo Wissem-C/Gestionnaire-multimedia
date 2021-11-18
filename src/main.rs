@@ -13,6 +13,7 @@ use std::env;
 use std::io;
 //use std::path::PathBuf;
 use console::Style;
+extern crate chrono;
 use std::process::exit;
 
 //use std::io::prelude::*;
@@ -26,26 +27,26 @@ use std::process::exit;
 
 fn main() {
     let cyan = Style::new().cyan();
-    println!("BIENVENU DANS LE PETIT GESTIONNAIRE DE FICHIER AUDIO MP3");
+    println!("WELCOME TO THE SMALL MP3 AUDIO FILE MANAGER");
 
     let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
-        println!("Vous navez pas rentré d'arguments, voulez vous passez en mode intéractif ? Répondez par\nOui\nNon");
+        println!("You have not entered any arguments, do you want to switch to interactive mode ? Answer with \nYes\nNo");
 
         let mut input = String::new();
         io::stdin()
             .read_line(&mut input)
             .expect("Echec de la lecture de l'entrée");
 
-        if input.trim().contains("Oui") {
+        if input.trim().contains("Yes") {
             interactif();
             loop {
-                println!("Avez vous une autre commande à réaliser ? Répondez par\nOui\nNon");
+                println!("Do you have another order to make? Answer with \nYes\nNo");
                 let mut input2 = String::new();
                 io::stdin()
                     .read_line(&mut input2)
                     .expect("Echec de la lecture de l'entrée");
-                if input2.trim().contains("Oui") {
+                if input2.trim().contains("Yes") {
                     interactif();
                     continue;
                 } else {
@@ -53,12 +54,13 @@ fn main() {
                     exit(1);
                 }
             }
-        } else if input.trim().contains("Non") {
+        } else if input.trim().contains("No") {
+            println!("Fin de programme");
+            exit(1);
+        } else {
             println!("Fin de programme");
             exit(1);
         }
-        println!("Fin de programme");
-        exit(1);
     } else {
         let test = CliArguments::new();
         command_scan_search(test);
