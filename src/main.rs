@@ -1,9 +1,11 @@
 //use chrono::prelude::{DateTime, Utc};
 use medman::cli::CliArguments;
+use medman::cli::CliArguments2;
 //use medman::musicfile::MusicFile;
 //use medman::musicfile;
 //use medman::musicfile::MusicFile;
 use medman::menu::command_scan_search;
+use medman::menu::command_scan_search2;
 use medman::menu::interactif;
 //use medman::scan::scan;
 //use medman::search::search_global;
@@ -26,6 +28,7 @@ use std::process::exit;
 // // FONCTION MAIN PRINCIPALE
 
 fn main() {
+    // A METTRE DANS LE MENU.RS !!!!!! ET APPELER LA FONCTION DEPUIS
     let cyan = Style::new().cyan();
     println!("WELCOME TO THE SMALL MP3 AUDIO FILE MANAGER");
 
@@ -62,7 +65,11 @@ fn main() {
             exit(1);
         }
     } else {
-        let test = CliArguments::new();
-        command_scan_search(test);
-    }
+        let test = CliArguments2::new();
+        println!("Cest ok");
+        command_scan_search2(test);
+    } // } else {
+      //     let test = CliArguments::new();
+      //     command_scan_search(test);
+      // }
 }

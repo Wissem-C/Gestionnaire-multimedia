@@ -4,7 +4,7 @@ use markdown_gen::markdown::List;
 use markdown_gen::markdown::Markdown;
 use std::fs::File;
 
-pub fn write2(music_file_vec: Vec<MusicFile>) {
+pub fn write2(music_file_vec: &Vec<MusicFile>) {
     let file = File::create("test.md").unwrap();
     let mut md = Markdown::new(file);
 
@@ -17,7 +17,8 @@ pub fn write2(music_file_vec: Vec<MusicFile>) {
                 .item(musicfile.artist.paragraph())
                 .item(musicfile.title.paragraph())
                 .item(musicfile.album.paragraph())
-                .item(musicfile.year.paragraph()),
+                .item(musicfile.year.paragraph())
+                .item(musicfile.creation_date.paragraph()),
         )
         .unwrap();
 

@@ -1,11 +1,12 @@
 //use chrono::prelude::{DateTime, Utc};
-use crate::cli::CliArguments;
+use crate::cli::{CliArguments, CliArguments2};
 
 //use medman::musicfile;
 //use medman::musicfile::MusicFile;
 use crate::scan::scan;
 use crate::search::search_global;
 //use structopt::StructOpt;
+use crate::search::search_intractif;
 
 //use std::env;
 use console::Style;
@@ -16,6 +17,45 @@ use std::path::PathBuf;
 
 //use std::process::exit;
 //use std::io::prelude::*;
+
+pub fn command_scan_search2(test: CliArguments2) {
+    let cyan = Style::new().magenta();
+    let red = Style::new().cyan();
+    if test.command == "scan" {
+        let mut cmp = 0;
+        let music_files = scan(test.path());
+
+        for music_file in &music_files {
+            cmp = cmp + 1;
+
+            println!(
+                "\n {} ========== NEW SONG ========== \n ",
+                red.apply_to(cmp)
+            );
+            println!(
+            "path: {:?}\nArtiste: {}\nTitle: {}\nAlbum: {}\nYear: {}\nCreation date : {:?}\nLast acess: {:?}\nLast modification : {:?}\n",
+            cyan.apply_to(&music_file.path),
+            cyan.apply_to(&music_file.artist),
+            cyan.apply_to(&music_file.title),
+            cyan.apply_to(&music_file.album),
+            cyan.apply_to(&music_file.year),
+            cyan.apply_to(&music_file.creation_date),
+            cyan.apply_to(&music_file.last_access),
+            cyan.apply_to(&music_file.last_modif),
+
+        );
+        }
+    } else if test.command == "search" {
+        scan(test.path());
+
+        println!("{} BLABLA ", test.recherche);
+        search_global(test.recherche);
+
+        // println!("PAS ENCORE IMPLÉMENTÉ");
+    } else {
+        println!("NO COMMANDS RECOGNIZED");
+    }
+}
 
 pub fn command_scan_search(test: CliArguments) {
     let cyan = Style::new().magenta();
@@ -61,7 +101,7 @@ pub fn command_scan_search(test: CliArguments) {
             .read_line(&mut input2)
             .expect("FAILED TO READ ENTRY");
 
-        search_global(input, input2)
+        search_intractif(input, input2)
 
         // println!("PAS ENCORE IMPLÉMENTÉ");
     } else {
