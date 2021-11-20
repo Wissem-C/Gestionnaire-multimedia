@@ -1,75 +1,42 @@
-//use chrono::prelude::{DateTime, Utc};
+use console::Style;
 use medman::cli::CliArguments;
 use medman::cli::CliArguments2;
-//use medman::musicfile::MusicFile;
-//use medman::musicfile;
-//use medman::musicfile::MusicFile;
-use medman::menu::command_scan_search;
-use medman::menu::command_scan_search2;
+use medman::menu::command_scan_auto;
+use medman::menu::command_search_auto;
 use medman::menu::interactif;
-//use medman::scan::scan;
-//use medman::search::search_global;
-//use structopt::StructOpt;
-
 use std::env;
 use std::io;
-//use std::path::PathBuf;
-use console::Style;
 extern crate chrono;
+use medman::menu::io_yes_no;
 use std::process::exit;
-
-//use std::io::prelude::*;
-
-//use std::io::prelude::*;
-//use std::io::Write;
-
-//use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
 // // FONCTION MAIN PRINCIPALE
 
 fn main() {
     // A METTRE DANS LE MENU.RS !!!!!! ET APPELER LA FONCTION DEPUIS
-    let cyan = Style::new().cyan();
     println!("WELCOME TO THE SMALL MP3 AUDIO FILE MANAGER");
 
     let args: Vec<String> = env::args().collect();
-    if args.len() < 2 {
-        println!("You have not entered any arguments, do you want to switch to interactive mode ? Answer with \nYes\nNo");
-
-        let mut input = String::new();
-        io::stdin()
-            .read_line(&mut input)
-            .expect("Echec de la lecture de l'entrée");
-
-        if input.trim().contains("Yes") {
+    if args.len() == 1 {
+        println!("{}", args.len());
+        loop {
             interactif();
-            loop {
-                println!("Do you have another order to make? Answer with \nYes\nNo");
-                let mut input2 = String::new();
-                io::stdin()
-                    .read_line(&mut input2)
-                    .expect("Echec de la lecture de l'entrée");
-                if input2.trim().contains("Yes") {
-                    interactif();
-                    continue;
-                } else {
-                    println!("Fin de programme");
-                    exit(1);
-                }
+            println!("Do you have another order to make? Answer with \nYes\nNo");
+            let input2 = io_yes_no();
+            if input2.trim().contains("Yes") {
+                continue;
+            } else {
+                println!("Fin de programme");
+                exit(1);
             }
-        } else if input.trim().contains("No") {
-            println!("Fin de programme");
-            exit(1);
-        } else {
-            println!("Fin de programme");
-            exit(1);
         }
+    } else if args.len() == 4 {
+        println!("{}", args.len());
+        command_search_auto(CliArguments2::new());
+    } else if args.len() == 3 {
+        println!("{}", args.len());
+        command_scan_auto(CliArguments::new())
     } else {
-        let test = CliArguments2::new();
-        println!("Cest ok");
-        command_scan_search2(test);
-    } // } else {
-      //     let test = CliArguments::new();
-      //     command_scan_search(test);
-      // }
+        panic!("ARGUMENTS ERROR");
+    }
 }

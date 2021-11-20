@@ -19,6 +19,7 @@ use std::{fs, panic};
 
 //use std::time::{Duration, SystemTime};
 
+// Affichage deux fois ??
 pub fn search_global(recherche: String) {
     let mut save_result: Vec<MusicFile> = Vec::new();
     let music_file_stockage = get_vec_serialized();
@@ -32,24 +33,17 @@ pub fn search_global(recherche: String) {
         } else if music.year.contains(recherche.trim()) {
             save_result.push(music);
         }
-        write2(&save_result);
-        println!("Oui mais y'a rien {}", recherche);
-        display(&save_result);
     }
+    write2(&save_result);
+    display(&save_result);
 }
 
 pub fn search_intractif(recherche: String, recherche2: String) {
-    //let mut music_file_stockage: Vec<MusicFile> = Vec::new();
     if recherche.trim().contains("artist") || recherche.trim().contains("Artist") {
-        // search_by_artist(recherche2.trim());
-        // music_file_stockage = search_by_artist(recherche2.trim(), get_vec_serialized());
-        // let mut music_file_stockage2 = improve_search(music_file_stockage);
-        //display(music_file_stockage2);
         display(&improve_search(search_by_artist(
             recherche2.trim(),
             get_vec_serialized(),
         )));
-        //write2(search_by_artist(recherche2.trim()));
     } else if recherche.trim().contains("title") || recherche.trim().contains("Title") {
         display(&improve_search(search_by_title(
             recherche2.trim(),
@@ -83,7 +77,7 @@ pub fn get_vec_serialized() -> Vec<MusicFile> {
 pub fn search_by_artist(artist: &str, musics: Vec<MusicFile>) -> Vec<MusicFile> {
     let mut music_file_stockage: Vec<MusicFile> = Vec::new();
     for music in musics {
-        if artist.contains(&music.artist) {
+        if music.artist.to_lowercase().contains(&artist.to_lowercase()) {
             music_file_stockage.push(music);
         }
     }
@@ -94,7 +88,7 @@ pub fn search_by_artist(artist: &str, musics: Vec<MusicFile>) -> Vec<MusicFile> 
 pub fn search_by_title(title: &str, musics: Vec<MusicFile>) -> Vec<MusicFile> {
     let mut music_file_stockage: Vec<MusicFile> = Vec::new();
     for music in musics {
-        if title.contains(&music.title) {
+        if music.title.to_lowercase().contains(&title.to_lowercase()) {
             music_file_stockage.push(music);
         }
     }
@@ -105,7 +99,7 @@ pub fn search_by_title(title: &str, musics: Vec<MusicFile>) -> Vec<MusicFile> {
 pub fn search_by_year(year: &str, musics: Vec<MusicFile>) -> Vec<MusicFile> {
     let mut music_file_stockage: Vec<MusicFile> = Vec::new();
     for music in musics {
-        if year.contains(&music.year) {
+        if music.year.to_lowercase().contains(&year.to_lowercase()) {
             music_file_stockage.push(music);
         }
     }
@@ -117,7 +111,7 @@ pub fn search_by_albums(album: &str, musics: Vec<MusicFile>) -> Vec<MusicFile> {
     let mut music_file_stockage: Vec<MusicFile> = Vec::new();
 
     for music in musics {
-        if album.contains(&music.album) {
+        if music.album.to_lowercase().contains(&album.to_lowercase()) {
             music_file_stockage.push(music);
         }
     }
