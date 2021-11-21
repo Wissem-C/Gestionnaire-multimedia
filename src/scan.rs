@@ -78,7 +78,7 @@ pub fn serialise(music_file: &Vec<MusicFile>) -> String {
     let mut file = File::create("/Users/wissemcherifi/Desktop/medman-Wissem-C-main/src/save.json")
         .expect("ERROR SERIALISATION");
 
-    let serialized = serde_json::to_string(&music_file).unwrap();
+    let serialized = serde_json::to_string_pretty(&music_file).unwrap();
 
     file.write_all(serialized.as_bytes()).unwrap();
 

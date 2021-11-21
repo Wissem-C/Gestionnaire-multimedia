@@ -131,7 +131,6 @@ pub fn display(music_files: &Vec<MusicFile>) {
                 music.creation_date,
                 music.last_access,
                 music.last_modif
-
             );
     }
 }
