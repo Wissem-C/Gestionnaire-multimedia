@@ -5,19 +5,15 @@ extern crate mp3_metadata;
 use crate::musicfile::MusicFile;
 use std::fs::File;
 use std::io::Write;
-//use chrono::prelude::{DateTime, Utc};
-use std::time::SystemTime;
-use std::{fs, panic};
-//use std::time::{Duration, SystemTime};
 
-const SUPPORTED_EXTENSIONS: [&str; 1] = ["mp3"];
+use std::{fs, panic};
 
 fn is_supported(entry: &DirEntry) -> bool {
     entry.path().is_file()
 }
 
 pub fn scan(path: &Path) -> Vec<MusicFile> {
-    let mut cmp = 0;
+    let mut _cmp = 0;
     let mut music_files: Vec<MusicFile> = Vec::new();
     let walker = WalkDir::new(path).into_iter();
 
@@ -41,13 +37,13 @@ pub fn scan(path: &Path) -> Vec<MusicFile> {
                     tag.title.trim_end_matches('\0').to_owned(),
                     tag.album.trim_end_matches('\0').to_owned(),
                     format!("{}", tag.year),
-                    format!("{:?}", meta_file.created()),
-                    format!("{:?}", meta_file.accessed()),
-                    format!("{:?}", meta_file.modified()),
+                    meta_file.created().unwrap(),
+                    meta_file.accessed().unwrap(),
+                    meta_file.modified().unwrap(),
                 ));
             }
 
-            cmp = cmp + 1;
+            _cmp += 1;
         }
     }
     //println!("\nNumber of songs added : {}", cmp);
@@ -74,7 +70,7 @@ pub fn delete_dir(path: &Path) {
     }
 }
 
-pub fn serialise(music_file: &Vec<MusicFile>) -> String {
+pub fn serialise(music_file: &[MusicFile]) -> String {
     let mut file = File::create("/Users/wissemcherifi/Desktop/medman-Wissem-C-main/src/save.json")
         .expect("ERROR SERIALISATION");
 
@@ -86,7 +82,7 @@ pub fn serialise(music_file: &Vec<MusicFile>) -> String {
 }
 
 pub fn deserialise(serialized: &str) -> Vec<MusicFile> {
-    let deserialized: Vec<MusicFile> = serde_json::from_str(&serialized).unwrap();
+    let deserialized: Vec<MusicFile> = serde_json::from_str(serialized).unwrap();
 
     deserialized
 }

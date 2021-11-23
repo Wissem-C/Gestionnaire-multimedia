@@ -1,11 +1,10 @@
-use console::Style;
 use medman::cli::CliArguments;
 use medman::cli::CliArguments2;
 use medman::menu::command_scan_auto;
 use medman::menu::command_search_auto;
 use medman::menu::interactif;
 use std::env;
-use std::io;
+
 extern crate chrono;
 use medman::menu::io_yes_no;
 use std::process::exit;

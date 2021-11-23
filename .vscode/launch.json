@@ -1,0 +1,76 @@
+{
+    // Utilisez IntelliSense pour en savoir plus sur les attributs possibles.
+    // Pointez pour afficher la description des attributs existants.
+    // Pour plus d'informations, visitez : https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+    {
+        "type": "lldb",
+        "request": "custom",
+        "name": "Custom launch",
+        "targetCreateCommands": [
+            "target create ${workspaceFolder}/medman-Wissem-C-main/src"
+        ],
+        "processCreateCommands": [
+            "settings set target.run-args run search /Users/wissemcherifi/Desktop/testmusique Drake ",
+            "process launch"
+        ]
+    },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'medman'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=medman"
+                ],
+                "filter": {
+                    "name": "medman",
+                    "kind": "lib"
+                }
+            },
+            "args": ["cargo run search /Users/wissemcherifi/Desktop/testmusique Drake"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'medman'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=medman",
+                    "--package=medman"
+                ],
+                "filter": {
+                    "name": "medman",
+                    "kind": "bin"
+                }
+            },
+            "args": ["cargo run search /Users/wissemcherifi/Desktop/testmusique Drake"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'medman'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=medman",
+                    "--package=medman"
+                ],
+                "filter": {
+                    "name": "medman",
+                    "kind": "bin"
+                }
+            },
+            "args": ["cargo run search /Users/wissemcherifi/Desktop/testmusique Drake"],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

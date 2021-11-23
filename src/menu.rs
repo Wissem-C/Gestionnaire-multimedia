@@ -1,23 +1,19 @@
-//use chrono::prelude::{DateTime, Utc};
 use crate::cli::{CliArguments, CliArguments2};
+use crate::write2_playlist::write2_playlist;
 
-//use medman::musicfile;
-//use medman::musicfile::MusicFile;
 use crate::scan::scan;
 use crate::search::search_global;
-//use structopt::StructOpt;
+
 use crate::search::search_intractif;
 
-//use std::env;
 use console::Style;
 use std::io;
 extern crate chrono;
-use chrono::{DateTime, TimeZone};
+
+use chrono::DateTime;
+use chrono::Utc;
 use std::path::PathBuf;
 use std::process::exit;
-
-//use std::process::exit;
-//use std::io::prelude::*;
 
 pub fn io_yes_no() -> String {
     let mut input = String::new();
@@ -30,11 +26,7 @@ pub fn io_yes_no() -> String {
 pub fn command_search_auto(test: CliArguments2) {
     if test.command == "search" {
         scan(test.path());
-
-        println!("{} BLABLA ", test.recherche);
-        search_global(test.recherche);
-
-        // println!("PAS ENCORE IMPLÉMENTÉ");
+        write2_playlist(search_global(&test.recherche));
     } else {
         panic!("NO COMMANDS RECOGNIZED");
     }
@@ -48,7 +40,7 @@ pub fn command_scan_auto(test: CliArguments) {
         let music_files = scan(test.path());
 
         for music_file in &music_files {
-            cmp = cmp + 1;
+            cmp += 1;
 
             println!(
                 "\n {} ========== NEW SONG ========== \n ",
@@ -76,26 +68,29 @@ pub fn command_scan_search_interactif(test: CliArguments) {
     let cyan = Style::new().magenta();
     let red = Style::new().cyan();
     if test.command == "scan" {
-        let mut cmp = 0;
+        let mut _cmp = 0;
         let music_files = scan(test.path());
 
         for music_file in &music_files {
-            cmp = cmp + 1;
+            let a: DateTime<Utc> = music_file.creation_date.into();
+            let b: DateTime<Utc> = music_file.last_access.into();
+            let c: DateTime<Utc> = music_file.last_modif.into();
+            _cmp += 1;
 
             println!(
                 "\n {} ========== NEW SONG ========== \n ",
-                red.apply_to(cmp)
+                red.apply_to(_cmp)
             );
             println!(
-            "path: {:?}\nArtiste: {}\nTitle: {}\nAlbum: {}\nYear: {}\nCreation date : {:?}\nLast acess: {:?}\nLast modification : {:?}\n",
+            "path: {:?}\nArtiste: {}\nTitle: {}\nAlbum: {}\nYear: {:?}\nCreation date : {:?}\nLast acess: {:?}\nLast modification : {:?}\n",
             cyan.apply_to(&music_file.path),
             cyan.apply_to(&music_file.artist),
             cyan.apply_to(&music_file.title),
             cyan.apply_to(&music_file.album),
             cyan.apply_to(&music_file.year),
-            cyan.apply_to(&music_file.creation_date),
-            cyan.apply_to(&music_file.last_access),
-            cyan.apply_to(&music_file.last_modif),
+            cyan.apply_to(a),
+            cyan.apply_to(b),
+            cyan.apply_to(c),
 
         );
         }
@@ -115,7 +110,7 @@ pub fn command_scan_search_interactif(test: CliArguments) {
             .read_line(&mut input2)
             .expect("FAILED TO READ ENTRY");
 
-        search_intractif(input, input2)
+        search_intractif(input, input2);
     } else {
         println!("NO COMMANDS RECOGNIZED");
     }
@@ -146,7 +141,7 @@ pub fn interactif() {
 
             let test = CliArguments {
                 command: input.trim().to_string(),
-                path: path,
+                path,
             };
             command_scan_search_interactif(test);
 

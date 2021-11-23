@@ -5,9 +5,18 @@
     "title": "Not Around",
     "album": "@talkglitz",
     "year": "2020",
-    "creation_date": "Ok(SystemTime { tv_sec: 1636294341, tv_nsec: 422986031 })",
-    "last_access": "Ok(SystemTime { tv_sec: 1636933797, tv_nsec: 598344684 })",
-    "last_modif": "Ok(SystemTime { tv_sec: 1636294486, tv_nsec: 83389044 })"
+    "creation_date": {
+      "secs_since_epoch": 1636294341,
+      "nanos_since_epoch": 422986031
+    },
+    "last_access": {
+      "secs_since_epoch": 1636933797,
+      "nanos_since_epoch": 598344684
+    },
+    "last_modif": {
+      "secs_since_epoch": 1636294486,
+      "nanos_since_epoch": 83389044
+    }
   },
   {
     "path": "/Users/wissemcherifi/Desktop/testmusique/musique/Drake_-_Toosie_Slide_talkglitz.tv.mp3",
@@ -15,9 +24,18 @@
     "title": "Toosie Slide",
     "album": "@talkglitz",
     "year": "2020",
-    "creation_date": "Ok(SystemTime { tv_sec: 1636047255, tv_nsec: 650703311 })",
-    "last_access": "Ok(SystemTime { tv_sec: 1636933797, tv_nsec: 601291992 })",
-    "last_modif": "Ok(SystemTime { tv_sec: 1636294467, tv_nsec: 559812307 })"
+    "creation_date": {
+      "secs_since_epoch": 1636047255,
+      "nanos_since_epoch": 650703311
+    },
+    "last_access": {
+      "secs_since_epoch": 1636933797,
+      "nanos_since_epoch": 601291992
+    },
+    "last_modif": {
+      "secs_since_epoch": 1636294467,
+      "nanos_since_epoch": 559812307
+    }
   },
   {
     "path": "/Users/wissemcherifi/Desktop/testmusique/musique/Cheque_-_Call_Me_Baby_talkglitz.tv.mp3",
@@ -25,9 +43,18 @@
     "title": "Call Me Baby",
     "album": "@talkglitz",
     "year": "2021",
-    "creation_date": "Ok(SystemTime { tv_sec: 1636049241, tv_nsec: 48132539 })",
-    "last_access": "Ok(SystemTime { tv_sec: 1636933797, tv_nsec: 604374550 })",
-    "last_modif": "Ok(SystemTime { tv_sec: 1636294494, tv_nsec: 486152291 })"
+    "creation_date": {
+      "secs_since_epoch": 1636049241,
+      "nanos_since_epoch": 48132539
+    },
+    "last_access": {
+      "secs_since_epoch": 1636933797,
+      "nanos_since_epoch": 604374550
+    },
+    "last_modif": {
+      "secs_since_epoch": 1636294494,
+      "nanos_since_epoch": 486152291
+    }
   },
   {
     "path": "/Users/wissemcherifi/Desktop/testmusique/musique/Fireboy_DML_-_Peru_talkglitz.tv.mp3",
@@ -35,9 +62,18 @@
     "title": "Peru ",
     "album": "@talkglitz",
     "year": "2021",
-    "creation_date": "Ok(SystemTime { tv_sec: 1636050703, tv_nsec: 649081469 })",
-    "last_access": "Ok(SystemTime { tv_sec: 1636933797, tv_nsec: 607145648 })",
-    "last_modif": "Ok(SystemTime { tv_sec: 1636294517, tv_nsec: 519397616 })"
+    "creation_date": {
+      "secs_since_epoch": 1636050703,
+      "nanos_since_epoch": 649081469
+    },
+    "last_access": {
+      "secs_since_epoch": 1636933797,
+      "nanos_since_epoch": 607145648
+    },
+    "last_modif": {
+      "secs_since_epoch": 1636294517,
+      "nanos_since_epoch": 519397616
+    }
   },
   {
     "path": "/Users/wissemcherifi/Desktop/testmusique/musique/Buju_-_Testimony_talkglitz.tv.mp3",
@@ -45,9 +81,18 @@
     "title": "Testimony",
     "album": "@talkglitz",
     "year": "2021",
-    "creation_date": "Ok(SystemTime { tv_sec: 1636049590, tv_nsec: 313558578 })",
-    "last_access": "Ok(SystemTime { tv_sec: 1636933797, tv_nsec: 609998747 })",
-    "last_modif": "Ok(SystemTime { tv_sec: 1636294498, tv_nsec: 989726186 })"
+    "creation_date": {
+      "secs_since_epoch": 1636049590,
+      "nanos_since_epoch": 313558578
+    },
+    "last_access": {
+      "secs_since_epoch": 1636933797,
+      "nanos_since_epoch": 609998747
+    },
+    "last_modif": {
+      "secs_since_epoch": 1636294498,
+      "nanos_since_epoch": 989726186
+    }
   },
   {
     "path": "/Users/wissemcherifi/Desktop/testmusique/musique/Mohbad_-_Feel_Good_talkglitz.tv.mp3",
@@ -55,9 +100,18 @@
     "title": "Feel Good",
     "album": "@talkglitz",
     "year": "2021",
-    "creation_date": "Ok(SystemTime { tv_sec: 1636049308, tv_nsec: 375383139 })",
-    "last_access": "Ok(SystemTime { tv_sec: 1636933797, tv_nsec: 613011555 })",
-    "last_modif": "Ok(SystemTime { tv_sec: 1636294509, tv_nsec: 624360323 })"
+    "creation_date": {
+      "secs_since_epoch": 1636049308,
+      "nanos_since_epoch": 375383139
+    },
+    "last_access": {
+      "secs_since_epoch": 1636933797,
+      "nanos_since_epoch": 613011555
+    },
+    "last_modif": {
+      "secs_since_epoch": 1636294509,
+      "nanos_since_epoch": 624360323
+    }
   },
   {
     "path": "/Users/wissemcherifi/Desktop/testmusique/musique/A_Boogie_Wit_Da_Hoodie_-_This_Time_talkglitz.tv.mp3",
@@ -65,9 +119,18 @@
     "title": "This Time",
     "album": "@talkglitz",
     "year": "2020",
-    "creation_date": "Ok(SystemTime { tv_sec: 1636048895, tv_nsec: 853174210 })",
-    "last_access": "Ok(SystemTime { tv_sec: 1636933797, tv_nsec: 616499449 })",
-    "last_modif": "Ok(SystemTime { tv_sec: 1636294503, tv_nsec: 523135781 })"
+    "creation_date": {
+      "secs_since_epoch": 1636048895,
+      "nanos_since_epoch": 853174210
+    },
+    "last_access": {
+      "secs_since_epoch": 1636933797,
+      "nanos_since_epoch": 616499449
+    },
+    "last_modif": {
+      "secs_since_epoch": 1636294503,
+      "nanos_since_epoch": 523135781
+    }
   },
   {
     "path": "/Users/wissemcherifi/Desktop/testmusique/MHD/07 - Fiesta.mp3",
@@ -75,9 +138,18 @@
     "title": "Fiesta",
     "album": "Mansa",
     "year": "2021",
-    "creation_date": "Ok(SystemTime { tv_sec: 1626390336, tv_nsec: 0 })",
-    "last_access": "Ok(SystemTime { tv_sec: 1636933797, tv_nsec: 623402486 })",
-    "last_modif": "Ok(SystemTime { tv_sec: 1626390336, tv_nsec: 0 })"
+    "creation_date": {
+      "secs_since_epoch": 1626390336,
+      "nanos_since_epoch": 0
+    },
+    "last_access": {
+      "secs_since_epoch": 1636933797,
+      "nanos_since_epoch": 623402486
+    },
+    "last_modif": {
+      "secs_since_epoch": 1626390336,
+      "nanos_since_epoch": 0
+    }
   },
   {
     "path": "/Users/wissemcherifi/Desktop/testmusique/MHD/06 - Jamais.mp3",
@@ -85,9 +157,18 @@
     "title": "Jamais",
     "album": "Mansa",
     "year": "2021",
-    "creation_date": "Ok(SystemTime { tv_sec: 1626390336, tv_nsec: 0 })",
-    "last_access": "Ok(SystemTime { tv_sec: 1636933797, tv_nsec: 628093011 })",
-    "last_modif": "Ok(SystemTime { tv_sec: 1626390336, tv_nsec: 0 })"
+    "creation_date": {
+      "secs_since_epoch": 1626390336,
+      "nanos_since_epoch": 0
+    },
+    "last_access": {
+      "secs_since_epoch": 1636933797,
+      "nanos_since_epoch": 628093011
+    },
+    "last_modif": {
+      "secs_since_epoch": 1626390336,
+      "nanos_since_epoch": 0
+    }
   },
   {
     "path": "/Users/wissemcherifi/Desktop/testmusique/MHD/13 - Wonder Mama.mp3",
@@ -95,9 +176,18 @@
     "title": "Wonder Mama",
     "album": "Mansa",
     "year": "2021",
-    "creation_date": "Ok(SystemTime { tv_sec: 1626390336, tv_nsec: 0 })",
-    "last_access": "Ok(SystemTime { tv_sec: 1636933797, tv_nsec: 630654358 })",
-    "last_modif": "Ok(SystemTime { tv_sec: 1626390336, tv_nsec: 0 })"
+    "creation_date": {
+      "secs_since_epoch": 1626390336,
+      "nanos_since_epoch": 0
+    },
+    "last_access": {
+      "secs_since_epoch": 1636933797,
+      "nanos_since_epoch": 630654358
+    },
+    "last_modif": {
+      "secs_since_epoch": 1626390336,
+      "nanos_since_epoch": 0
+    }
   },
   {
     "path": "/Users/wissemcherifi/Desktop/testmusique/MHD/9min.mp3",
@@ -105,9 +195,18 @@
     "title": "Neufmin",
     "album": "Mansa",
     "year": "2021",
-    "creation_date": "Ok(SystemTime { tv_sec: 1626390336, tv_nsec: 0 })",
-    "last_access": "Ok(SystemTime { tv_sec: 1636933797, tv_nsec: 633645958 })",
-    "last_modif": "Ok(SystemTime { tv_sec: 1636744102, tv_nsec: 46163827 })"
+    "creation_date": {
+      "secs_since_epoch": 1626390336,
+      "nanos_since_epoch": 0
+    },
+    "last_access": {
+      "secs_since_epoch": 1636933797,
+      "nanos_since_epoch": 633645958
+    },
+    "last_modif": {
+      "secs_since_epoch": 1636744102,
+      "nanos_since_epoch": 46163827
+    }
   },
   {
     "path": "/Users/wissemcherifi/Desktop/testmusique/MHD/05 - Afro Trap Part. 11 (King Kong).mp3",
@@ -115,9 +214,18 @@
     "title": "Afro Trap Part. 11 (King Kong)",
     "album": "Mansa",
     "year": "2021",
-    "creation_date": "Ok(SystemTime { tv_sec: 1626390334, tv_nsec: 0 })",
-    "last_access": "Ok(SystemTime { tv_sec: 1636933797, tv_nsec: 635720344 })",
-    "last_modif": "Ok(SystemTime { tv_sec: 1626390334, tv_nsec: 0 })"
+    "creation_date": {
+      "secs_since_epoch": 1626390334,
+      "nanos_since_epoch": 0
+    },
+    "last_access": {
+      "secs_since_epoch": 1636933797,
+      "nanos_since_epoch": 635720344
+    },
+    "last_modif": {
+      "secs_since_epoch": 1626390334,
+      "nanos_since_epoch": 0
+    }
   },
   {
     "path": "/Users/wissemcherifi/Desktop/testmusique/MHD/02 - Elle.mp3",
@@ -125,9 +233,18 @@
     "title": "Elle",
     "album": "Mansa",
     "year": "2021",
-    "creation_date": "Ok(SystemTime { tv_sec: 1626390334, tv_nsec: 0 })",
-    "last_access": "Ok(SystemTime { tv_sec: 1636933797, tv_nsec: 637258686 })",
-    "last_modif": "Ok(SystemTime { tv_sec: 1626390334, tv_nsec: 0 })"
+    "creation_date": {
+      "secs_since_epoch": 1626390334,
+      "nanos_since_epoch": 0
+    },
+    "last_access": {
+      "secs_since_epoch": 1636933797,
+      "nanos_since_epoch": 637258686
+    },
+    "last_modif": {
+      "secs_since_epoch": 1626390334,
+      "nanos_since_epoch": 0
+    }
   },
   {
     "path": "/Users/wissemcherifi/Desktop/testmusique/MHD/08 - Tudo Bem.mp3",
@@ -135,9 +252,18 @@
     "title": "Tudo Bem",
     "album": "Mansa",
     "year": "2021",
-    "creation_date": "Ok(SystemTime { tv_sec: 1626390336, tv_nsec: 0 })",
-    "last_access": "Ok(SystemTime { tv_sec: 1636933797, tv_nsec: 639124737 })",
-    "last_modif": "Ok(SystemTime { tv_sec: 1626390336, tv_nsec: 0 })"
+    "creation_date": {
+      "secs_since_epoch": 1626390336,
+      "nanos_since_epoch": 0
+    },
+    "last_access": {
+      "secs_since_epoch": 1636933797,
+      "nanos_since_epoch": 639124737
+    },
+    "last_modif": {
+      "secs_since_epoch": 1626390336,
+      "nanos_since_epoch": 0
+    }
   },
   {
     "path": "/Users/wissemcherifi/Desktop/testmusique/MHD/03 - Pololo.mp3",
@@ -145,9 +271,18 @@
     "title": "Pololo",
     "album": "Mansa",
     "year": "2021",
-    "creation_date": "Ok(SystemTime { tv_sec: 1626390334, tv_nsec: 0 })",
-    "last_access": "Ok(SystemTime { tv_sec: 1636933797, tv_nsec: 640865247 })",
-    "last_modif": "Ok(SystemTime { tv_sec: 1626390334, tv_nsec: 0 })"
+    "creation_date": {
+      "secs_since_epoch": 1626390334,
+      "nanos_since_epoch": 0
+    },
+    "last_access": {
+      "secs_since_epoch": 1636933797,
+      "nanos_since_epoch": 640865247
+    },
+    "last_modif": {
+      "secs_since_epoch": 1626390334,
+      "nanos_since_epoch": 0
+    }
   },
   {
     "path": "/Users/wissemcherifi/Desktop/testmusique/MHD/09 - FNR.mp3",
@@ -155,9 +290,18 @@
     "title": "FNR",
     "album": "Mansa",
     "year": "2021",
-    "creation_date": "Ok(SystemTime { tv_sec: 1626390336, tv_nsec: 0 })",
-    "last_access": "Ok(SystemTime { tv_sec: 1636933797, tv_nsec: 642378463 })",
-    "last_modif": "Ok(SystemTime { tv_sec: 1626390336, tv_nsec: 0 })"
+    "creation_date": {
+      "secs_since_epoch": 1626390336,
+      "nanos_since_epoch": 0
+    },
+    "last_access": {
+      "secs_since_epoch": 1636933797,
+      "nanos_since_epoch": 642378463
+    },
+    "last_modif": {
+      "secs_since_epoch": 1626390336,
+      "nanos_since_epoch": 0
+    }
   },
   {
     "path": "/Users/wissemcherifi/Desktop/testmusique/MHD/10 - Thieba.mp3",
@@ -165,9 +309,18 @@
     "title": "Thieba",
     "album": "Mansa",
     "year": "2021",
-    "creation_date": "Ok(SystemTime { tv_sec: 1626390336, tv_nsec: 0 })",
-    "last_access": "Ok(SystemTime { tv_sec: 1636933797, tv_nsec: 644305515 })",
-    "last_modif": "Ok(SystemTime { tv_sec: 1626390336, tv_nsec: 0 })"
+    "creation_date": {
+      "secs_since_epoch": 1626390336,
+      "nanos_since_epoch": 0
+    },
+    "last_access": {
+      "secs_since_epoch": 1636933797,
+      "nanos_since_epoch": 644305515
+    },
+    "last_modif": {
+      "secs_since_epoch": 1626390336,
+      "nanos_since_epoch": 0
+    }
   },
   {
     "path": "/Users/wissemcherifi/Desktop/testmusique/MHD/01 - Petit coeur.mp3",
@@ -175,8 +328,17 @@
     "title": "Petit coeur",
     "album": "Mansa",
     "year": "2021",
-    "creation_date": "Ok(SystemTime { tv_sec: 1626390334, tv_nsec: 0 })",
-    "last_access": "Ok(SystemTime { tv_sec: 1636933797, tv_nsec: 645880607 })",
-    "last_modif": "Ok(SystemTime { tv_sec: 1626390334, tv_nsec: 0 })"
+    "creation_date": {
+      "secs_since_epoch": 1626390334,
+      "nanos_since_epoch": 0
+    },
+    "last_access": {
+      "secs_since_epoch": 1636933797,
+      "nanos_since_epoch": 645880607
+    },
+    "last_modif": {
+      "secs_since_epoch": 1626390334,
+      "nanos_since_epoch": 0
+    }
   }
 ]

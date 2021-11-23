@@ -1,6 +1,8 @@
 use serde::{Deserialize, Serialize};
-use std::path::{Path, PathBuf};
-//use std::time::SystemTime;
+use std::{
+    path::{Path, PathBuf},
+    time::SystemTime,
+};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct MusicFile {
@@ -9,31 +11,31 @@ pub struct MusicFile {
     pub title: String,
     pub album: String,
     pub year: String,
-    pub creation_date: String,
-    pub last_access: String,
-    pub last_modif: String,
+    pub creation_date: SystemTime,
+    pub last_access: SystemTime,
+    pub last_modif: SystemTime,
 }
 
 impl MusicFile {
     pub fn new(
         path: &Path,
-        a: String,
-        b: String,
-        c: String,
-        d: String,
-        e: String,
-        f: String,
-        g: String,
+        artist: String,
+        title: String,
+        album: String,
+        year: String,
+        creation_date: SystemTime,
+        last_access: SystemTime,
+        last_modif: SystemTime,
     ) -> MusicFile {
         MusicFile {
             path: path.to_path_buf(),
-            artist: a,
-            title: b,
-            album: c,
-            year: d,
-            creation_date: e,
-            last_access: f,
-            last_modif: g,
+            artist,
+            title,
+            album,
+            year,
+            creation_date,
+            last_access,
+            last_modif,
         }
     }
 }
