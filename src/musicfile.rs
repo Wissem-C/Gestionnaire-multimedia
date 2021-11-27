@@ -14,6 +14,7 @@ pub struct MusicFile {
     pub creation_date: SystemTime,
     pub last_access: SystemTime,
     pub last_modif: SystemTime,
+    pub comment: String,
 }
 
 impl MusicFile {
@@ -26,6 +27,7 @@ impl MusicFile {
         creation_date: SystemTime,
         last_access: SystemTime,
         last_modif: SystemTime,
+        comment: String,
     ) -> MusicFile {
         MusicFile {
             path: path.to_path_buf(),
@@ -36,6 +38,7 @@ impl MusicFile {
             creation_date,
             last_access,
             last_modif,
+            comment,
         }
     }
 }

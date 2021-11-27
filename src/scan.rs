@@ -40,6 +40,7 @@ pub fn scan(path: &Path) -> Vec<MusicFile> {
                     meta_file.created().unwrap(),
                     meta_file.accessed().unwrap(),
                     meta_file.modified().unwrap(),
+                    format!("{}", tag.comment),
                 ));
             }
 
@@ -62,12 +63,6 @@ pub fn delete_dir(path: &Path) {
     let mut list_dir = Command::new("rm");
     list_dir.arg(".DS_STORE");
     list_dir.current_dir(&path);
-
-    if list_dir.status().is_ok() {
-        println!("\nLE DS_STORE FILE HAS BEEN DELETED OR NOT PRESENT")
-    } else {
-        panic!("THE DS_STORE FILE IS A PROBLEM !!");
-    }
 }
 
 pub fn serialise(music_file: &[MusicFile]) -> String {

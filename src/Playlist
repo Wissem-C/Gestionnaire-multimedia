@@ -1,6 +1,3 @@
 [playlist]
-File1=/Users/wissemcherifi/Desktop/testmusique/MHD/06 - Jamais.mp3
-Title1=Jamais
-
-NumberOfEntries=1
+NumberOfEntries=0
 Version=2

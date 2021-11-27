@@ -1,8 +1,12 @@
+mod Search;
 pub mod cli;
 pub mod menu;
+pub mod menu2;
 pub mod metafile;
 pub mod musicfile;
 pub mod scan;
+pub mod scrap;
 pub mod search;
+pub mod tag;
 pub mod write2_playlist;
 pub mod write2md;

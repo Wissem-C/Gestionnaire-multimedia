@@ -1,4 +1,5 @@
 use crate::cli::{CliArguments, CliArguments2};
+use crate::menu2::{the_menu_categorie, the_menu_path, the_menu_scan_search, the_menu_yes_no};
 use crate::write2_playlist::write2_playlist;
 
 use crate::scan::scan;
@@ -9,7 +10,9 @@ use crate::search::search_intractif;
 use console::Style;
 use std::io;
 extern crate chrono;
+use crate::search::display;
 
+use crate::tag::tag_music;
 use chrono::DateTime;
 use chrono::Utc;
 use std::path::PathBuf;
@@ -26,7 +29,7 @@ pub fn io_yes_no() -> String {
 pub fn command_search_auto(test: CliArguments2) {
     if test.command == "search" {
         scan(test.path());
-        write2_playlist(search_global(&test.recherche));
+        write2_playlist(&search_global(&test.recherche));
     } else {
         panic!("NO COMMANDS RECOGNIZED");
     }
@@ -96,10 +99,9 @@ pub fn command_scan_search_interactif(test: CliArguments) {
         }
     } else if test.command == "search" {
         scan(test.path());
-        println!(
-            "What type are you looking for? Choose one of the possibilities: \nArtist\nTitle\nYear\nAlbum"
-        );
-        let mut input = String::new();
+
+        println!(" WHAT TYPE ARE YOU LOOKING FOR ? ");
+        let mut input = the_menu_categorie();
         io::stdin()
             .read_line(&mut input)
             .expect("Echec de la lecture de l'entrée");
@@ -110,6 +112,7 @@ pub fn command_scan_search_interactif(test: CliArguments) {
             .read_line(&mut input2)
             .expect("FAILED TO READ ENTRY");
 
+        //tag_music(search_intractif(input, input2));
         search_intractif(input, input2);
     } else {
         println!("NO COMMANDS RECOGNIZED");
@@ -117,26 +120,21 @@ pub fn command_scan_search_interactif(test: CliArguments) {
 }
 
 pub fn interactif() {
-    println!("Do you want to use the interactive mode ? Answer with \nYes\nNo");
-
-    let input = io_yes_no();
+    println!("DO YOU WANT TO USE INTERATIVE MODE ?");
+    let input = the_menu_yes_no();
 
     if input.trim().contains("Yes") {
         // PASSAGE EN MODE INTERATIF
         loop {
-            println!("Type the command you want to use: \nscan\nsearch");
-            let mut input = String::new();
-            io::stdin()
-                .read_line(&mut input)
-                .expect("FAILED TO READ ENTRY");
+            println!("TYPE THE COMMAND YOU WANT TO USE  : ");
+            let input = the_menu_scan_search();
+            println!("GIVE THE PATH TO ANALYSE YOUR DATA : ");
 
-            println!("Give the path to analyze your data");
-
-            let mut input2 = String::new();
-            io::stdin()
-                .read_line(&mut input2)
-                .expect("FAILED TO READ ENTRY");
-
+            let input2 = the_menu_path();
+            if input.trim().contains("Exit") {
+                println!("Fin de programme");
+                exit(1);
+            }
             let path = PathBuf::from(input2.trim());
 
             let test = CliArguments {
@@ -144,17 +142,18 @@ pub fn interactif() {
                 path,
             };
             command_scan_search_interactif(test);
+            search_intractif(input, input2);
 
-            println!("Do you have another order to make? Answer with \nYes\nNo");
-            let input2 = io_yes_no();
+            println!("DO YOU WANT TO MAKE AN OTHER SCAN OR SEARCH ?:");
+            let input2 = the_menu_yes_no();
             if input2.trim().contains("Yes") {
                 continue;
-            } else {
+            } else if input2.trim().contains("Exit") {
                 println!("Fin de programme");
                 exit(1);
             }
         }
-    } else {
+    } else if input.trim().contains("Exit") {
         println!("Fin de programme");
         exit(1);
     }

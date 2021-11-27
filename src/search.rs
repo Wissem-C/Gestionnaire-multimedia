@@ -1,4 +1,5 @@
-// use crate::write2_playlist::write2_playlist;
+use crate::menu2::the_menu_categorie_affinage;
+use crate::write2_playlist::write2_playlist;
 use crate::{musicfile::MusicFile, write2md::write2};
 use chrono::DateTime;
 use chrono::Utc;
@@ -7,7 +8,10 @@ use std::{fs, panic};
 
 pub fn search_global(recherche: &String) -> Vec<MusicFile> {
     let mut save_result: Vec<MusicFile> = Vec::new();
+    // let mut save_result2: Vec<MusicFile> = Vec::new();
     let music_file_stockage = get_vec_serialized();
+    // let cmp = 5;
+
     for music in music_file_stockage {
         if music.album.contains(recherche.trim()) {
             save_result.push(music);
@@ -17,40 +21,33 @@ pub fn search_global(recherche: &String) -> Vec<MusicFile> {
             save_result.push(music);
         } else if music.year.contains(recherche.trim()) {
             save_result.push(music);
+        } else if music.comment.contains(recherche.trim()) {
+            save_result.push(music);
         }
-        //  panic!("CA BUG ICI");
     }
-    println!("Coucou");
+
     write2(&save_result);
+    write2_playlist(&save_result);
     display(&save_result);
     save_result
 }
 
-pub fn search_intractif(recherche: String, recherche2: String) {
+pub fn search_intractif(recherche: String, recherche2: String) -> Vec<MusicFile> {
+    let mut _search_result: Vec<MusicFile> = Vec::new();
     if recherche.trim().contains("artist") || recherche.trim().contains("Artist") {
-        display(&improve_search(search_by_artist(
-            recherche2.trim(),
-            get_vec_serialized(),
-        )));
+        _search_result = improve_search(search_by_artist(recherche2.trim(), get_vec_serialized()));
+        display(&_search_result);
     } else if recherche.trim().contains("title") || recherche.trim().contains("Title") {
-        display(&improve_search(search_by_title(
-            recherche2.trim(),
-            get_vec_serialized(),
-        )));
+        _search_result = improve_search(search_by_title(recherche2.trim(), get_vec_serialized()));
+        display(&_search_result);
     } else if recherche.trim().contains("year") || recherche.trim().contains("Year") {
-        display(&improve_search(search_by_year(
-            recherche2.trim(),
-            get_vec_serialized(),
-        )));
+        _search_result = improve_search(search_by_year(recherche2.trim(), get_vec_serialized()));
+        display(&_search_result);
     } else if recherche.trim().contains("album") || recherche.trim().contains("Album") {
-        display(&improve_search(search_by_albums(
-            recherche2.trim(),
-            get_vec_serialized(),
-        )));
-    } else {
-        println!("recherche{}recherche2{:?}", recherche, recherche2);
-        panic!("One of the data entered was incorrectly typed");
+        _search_result = improve_search(search_by_albums(recherche2.trim(), get_vec_serialized()));
+        display(&_search_result);
     }
+    _search_result
 }
 
 pub fn get_vec_serialized() -> Vec<MusicFile> {
@@ -69,7 +66,6 @@ pub fn search_by_artist(artist: &str, musics: Vec<MusicFile>) -> Vec<MusicFile> 
             music_file_stockage.push(music);
         }
     }
-    //println!("Le vecteur de retour :{:?}", music_file_stockage);
     music_file_stockage
 }
 
@@ -111,8 +107,10 @@ pub fn display(music_files: &[MusicFile]) {
         let a: DateTime<Utc> = music.creation_date.into();
         let b: DateTime<Utc> = music.last_access.into();
         let c: DateTime<Utc> = music.last_modif.into();
+        print!("\x1B[2J\x1B[1;1H");
+        println!("RESULT OF THE QUERY :");
         println!(
-                "RESULT OF THE QUERY :\nArtiste: {}\nTitle: {}\nAlbum: {}\nYear: {:?}\nCreation date : {:?}\nLast acess: {:?}\nLast modification : {:?}\n",
+                "\nArtiste: {}\nTitle: {}\nAlbum: {}\nYear: {:?}\nCreation date : {:?}\nLast acess: {:?}\nLast modification : {:?}\nTag :{:?}\n",
                // music_file.path,
                 music.artist,
                 music.title,
@@ -121,19 +119,19 @@ pub fn display(music_files: &[MusicFile]) {
                 a,
                 b,
                 c,
+                music.comment
             );
     }
 }
 
 pub fn improve_search(music_files: Vec<MusicFile>) -> Vec<MusicFile> {
     let mut _music_file_stockage: Vec<MusicFile> = Vec::new();
-    println!("Voulez vous affiner votre recherche par année, titre ou par album ? Tapez votre réponse \nAlbum\nYear\nTitle\nNon");
-    let mut input1 = String::new();
-    io::stdin()
-        .read_line(&mut input1)
-        .expect("FAILED TO READ ENTRY");
+    print!("\x1B[2J\x1B[1;1H");
+    println!(" DO YOU WANT TO REFINE YOUR SEARCH ?");
+    let input1 = the_menu_categorie_affinage();
 
     if "Title".contains(input1.trim()) {
+        print!("\x1B[2J\x1B[1;1H");
         println!("Tapez le nom du titre pour afficher votre recherche:");
         let mut input2 = String::new();
         io::stdin()
@@ -147,6 +145,7 @@ pub fn improve_search(music_files: Vec<MusicFile>) -> Vec<MusicFile> {
 
         _music_file_stockage
     } else if "Year".contains(input1.trim()) {
+        print!("\x1B[2J\x1B[1;1H");
         println!("Tapez le nom de l'année pour affiner pour recherche");
         let mut input2 = String::new();
         io::stdin()
@@ -158,6 +157,7 @@ pub fn improve_search(music_files: Vec<MusicFile>) -> Vec<MusicFile> {
 
         _music_file_stockage
     } else if "Album".contains(input1.trim()) {
+        print!("\x1B[2J\x1B[1;1H");
         println!("Tapez le nom de l'année pour affiner pour recherche");
         let mut input2 = String::new();
         io::stdin()
