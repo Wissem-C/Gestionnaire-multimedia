@@ -3,10 +3,10 @@ use crate::write2_playlist::write2_playlist;
 use crate::{musicfile::MusicFile, write2md::write2};
 use chrono::DateTime;
 use chrono::Utc;
+use std::fs;
 use std::io;
-use std::{fs, panic};
 
-pub fn search_global(recherche: &String) -> Vec<MusicFile> {
+pub fn search_global(recherche: &str) -> Vec<MusicFile> {
     let mut save_result: Vec<MusicFile> = Vec::new();
     // let mut save_result2: Vec<MusicFile> = Vec::new();
     let music_file_stockage = get_vec_serialized();
@@ -103,11 +103,12 @@ pub fn search_by_albums(album: &str, musics: Vec<MusicFile>) -> Vec<MusicFile> {
 }
 
 pub fn display(music_files: &[MusicFile]) {
+    print!("\x1B[2J\x1B[1;1H");
     for music in music_files {
         let a: DateTime<Utc> = music.creation_date.into();
         let b: DateTime<Utc> = music.last_access.into();
         let c: DateTime<Utc> = music.last_modif.into();
-        print!("\x1B[2J\x1B[1;1H");
+
         println!("RESULT OF THE QUERY :");
         println!(
                 "\nArtiste: {}\nTitle: {}\nAlbum: {}\nYear: {:?}\nCreation date : {:?}\nLast acess: {:?}\nLast modification : {:?}\nTag :{:?}\n",
@@ -172,4 +173,21 @@ pub fn improve_search(music_files: Vec<MusicFile>) -> Vec<MusicFile> {
         write2(&music_files);
         music_files
     }
+}
+
+#[test]
+fn test_search_title() {
+    let music = search_global(&"Jamais".to_string());
+    assert_eq!("Jamais", music[0].title);
+}
+#[test]
+fn test_search_artist() {
+    let music = search_global(&"Drake".to_string());
+    assert_eq!("Drake", music[0].artist);
+}
+
+#[test]
+fn test_search_annee() {
+    let music = search_global(&"2020".to_string());
+    assert_eq!("2020", music[0].year);
 }

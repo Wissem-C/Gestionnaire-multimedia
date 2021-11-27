@@ -47,3 +47,15 @@ impl CliArguments2 {
         self.path.as_path()
     }
 }
+
+impl Default for CliArguments {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl Default for CliArguments2 {
+    fn default() -> Self {
+        Self::new()
+    }
+}

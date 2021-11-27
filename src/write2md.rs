@@ -5,7 +5,7 @@ use markdown_gen::markdown::Markdown;
 use std::fs::File;
 
 pub fn write2(music_file_vec: &[MusicFile]) {
-    let file = File::create("test.md").unwrap();
+    let file = File::create("Markdown.md").unwrap();
     let mut md = Markdown::new(file);
 
     md.write("Musics found: ".heading(1)).unwrap();

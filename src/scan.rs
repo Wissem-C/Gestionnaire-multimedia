@@ -3,9 +3,11 @@ use std::process::Command;
 use walkdir::{DirEntry, WalkDir};
 extern crate mp3_metadata;
 use crate::musicfile::MusicFile;
+use crate::search::search_by_artist;
+use crate::search::search_by_title;
+use crate::search::search_by_year;
 use std::fs::File;
 use std::io::Write;
-
 use std::{fs, panic};
 
 fn is_supported(entry: &DirEntry) -> bool {
@@ -40,7 +42,7 @@ pub fn scan(path: &Path) -> Vec<MusicFile> {
                     meta_file.created().unwrap(),
                     meta_file.accessed().unwrap(),
                     meta_file.modified().unwrap(),
-                    format!("{}", tag.comment),
+                    tag.comment.to_string(),
                 ));
             }
 
@@ -80,4 +82,25 @@ pub fn deserialise(serialized: &str) -> Vec<MusicFile> {
     let deserialized: Vec<MusicFile> = serde_json::from_str(serialized).unwrap();
 
     deserialized
+}
+
+#[test]
+fn test_scan_title() {
+    let music = scan(Path::new("/Users/wissemcherifi/Desktop/testmusique/MHD"));
+    let save = search_by_title("Jamais", music);
+    assert_eq!("Jamais", save[0].title)
+}
+
+#[test]
+
+fn test_scan_artist() {
+    let music = scan(Path::new("/Users/wissemcherifi/Desktop/testmusique/MHD"));
+    let save = search_by_artist("MHD", music);
+    assert_eq!("MHD", save[0].artist)
+}
+#[test]
+fn test_scan_year() {
+    let music = scan(Path::new("/Users/wissemcherifi/Desktop/testmusique"));
+    let save = search_by_year("2021", music);
+    assert_eq!("2021", save[0].year)
 }

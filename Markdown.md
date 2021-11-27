@@ -1,9 +1,10 @@
 # Musics found: 
 
 New Song :
-   * Drake
-   * @talkglitz
-   * Not Around
+   * MHD
+   * Mansa
+   * Jamais
+   * 2021d
    * 2020
 New Song :
    * Drake

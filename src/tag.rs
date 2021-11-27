@@ -7,7 +7,7 @@ use std::process::exit;
 
 pub fn tag_music(music_file: Vec<MusicFile>) {
     //let mut save_result: Vec<MusicFile> = Vec::new();
-    //    print!("\x1B[2J\x1B[1;1H");
+    // print!("\x1B[2J\x1B[1;1H");
     println!("Voulez vous rajouter un tag sur les musiques de votre recherche ? \nYes \nNo");
     let input = the_menu_yes_no();
     if input.trim() == "Yes" {

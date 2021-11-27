@@ -10,9 +10,7 @@ use crate::search::search_intractif;
 use console::Style;
 use std::io;
 extern crate chrono;
-use crate::search::display;
 
-use crate::tag::tag_music;
 use chrono::DateTime;
 use chrono::Utc;
 use std::path::PathBuf;
